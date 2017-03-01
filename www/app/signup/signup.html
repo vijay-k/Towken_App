@@ -1,0 +1,294 @@
+<ion-view hide-nav-bar="true" animation="slide-left-right">
+    <div class="bar bar-header bkground">
+        <button class="button button-clear" ng-click="signup.goBack()"> <i class="ion-ios-arrow-left white"></i> <span class="white" >Back</span></button>
+    </div>
+    <ion-content>
+        <div id="loginContainer">
+            <div class="text-center m-t-50">
+                <img src="app/assets/img/logo.png" class="ScaleLogo">
+            </div>
+
+            <!--view for user signup-->
+            <form name="SignupForm" class="user-signup-form" autocomplete="off" novalidate data-ng-if="signup.userType.toLowerCase() === signup.signupTypes[0]">
+                <div class="list">
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="name ion-ios-list-outline color"></i>
+                        <input md-no-asterisk ng-model="signup.fullname" type="text" placeholder="Name" required>
+                    </md-input-container>
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="fa fa-envelope color name"></i>
+                        <input ng-model="signup.email" name="email" type="email" md-no-asterisk placeholder="Email" required>
+                    </md-input-container>
+
+                    <md-input-container class="col font100 m-b-30" md-no-float>
+                        <i class="glyphicon glyphicon-lock color name"></i>
+                        <input ng-model="signup.password" name="password" type="password" required md-no-asterisk placeholder="Password">
+                    </md-input-container>
+
+                    <label class="toggle" style="vertical-align: middle;">
+                    <input type="checkbox" ng-model="signup.user" ng-change="signup.changeSignupType('business');">
+                    <div class="track">
+                        <div class="handle bkground"></div>
+                    </div>
+                </label>
+                    <span class="font-18">&nbsp;&nbsp; {{signup.userType}}</span>
+                </div>
+
+                <div class="col-xs-12 no-pad-left-right">
+                    <button class="btn btn-block btn-lg btn-primary signIn bkground" ng-click="signup.userSignup()" ng-disabled="SignupForm.email.$invalid || SignupForm.fullname.$invalid || SignupForm.username.$invalid || SignupForm.password.$invalid">SIGN UP</button>
+                </div>
+                <div class="col-xs-12 no-pad-left-right">
+                    <div class="text-center m-t-30 m-b-15" ng-style="!login.user && {'margin-top': '30px'}">
+                        <small class="font-14">
+                            <span>When you Signup, automatically you agree with our  <br/> <a> Terms and service of Towken App</span>
+                        </small>
+                    </div>
+                </div>
+            </form>
+            <!--view for user signup-->
+
+            <!--view for business signup-->
+            <form class="signup-form" name="signup.BusinessSignupForm" autocomplete="off" novalidate data-ng-submit="signup.businessSignup(BusinessSignupForm, signup)"
+                data-ng-if="signup.userType.toLowerCase() === signup.signupTypes[1]">
+
+                <div class="list m-t-30">
+
+                    <md-input-container class="col font100" md-no-float>
+                        <svg style="position: absolute;" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 25 25" style="enable-background:new 0 0 18 18;"
+                            xml:space="preserve">
+                            <g id="icon">
+                                <g>
+                                    <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#8F3F96;" d="M16.821,11.117h-9.25c-0.308,0-0.557,0.258-0.557,0.576
+			s0.25,0.576,0.557,0.576h9.25c0.308,0,0.558-0.258,0.558-0.576S17.129,11.117,16.821,11.117z M18.18,0H3.56
+			C3.099,0,3.724,0.387,3.724,0.864v2.534H3.557C3.25,3.398,3,3.656,3,3.975s0.25,0.576,0.557,0.576h0.167v3.11H3.557
+			C3.25,7.661,3,7.919,3,8.237s0.25,0.576,0.557,0.576h0.167v3.11H3.557C3.25,11.924,3,12.182,3,12.5s0.25,0.576,0.557,0.576h0.167
+			v3.11H3.557C3.25,16.187,3,16.444,3,16.763s0.25,0.576,0.557,0.576h0.167v3.11H3.557C3.25,20.449,3,20.707,3,21.025
+			s0.25,0.576,0.557,0.576h0.167v2.534C3.724,24.613,3.099,25,3.56,25h14.62c1.555,0,2.82-1.308,2.82-2.916V2.915
+			C21,1.308,19.734,0,18.18,0z M19.328,22.084c0,0.655-0.516,1.188-1.148,1.188H4.396v-1.67h0.167c0.308,0,0.557-0.258,0.557-0.576
+			s-0.25-0.576-0.557-0.576H4.396v-3.11h0.167c0.308,0,0.557-0.258,0.557-0.576s-0.25-0.576-0.557-0.576H4.396v-3.11h0.167
+			c0.308,0,0.557-0.258,0.557-0.576s-0.25-0.576-0.557-0.576H4.396v-3.11h0.167c0.308,0,0.557-0.258,0.557-0.576
+			s-0.25-0.576-0.557-0.576H4.396v-3.11h0.167c0.308,0,0.557-0.258,0.557-0.576s-0.25-0.576-0.557-0.576H4.396V1.728H18.18
+			c0.633,0,1.148,0.533,1.148,1.188V22.084z M16.821,6.048h-9.25c-0.308,0-0.557,0.259-0.557,0.576V9.62
+			c0,0.317,0.25,0.575,0.557,0.575h9.25c0.308,0,0.558-0.258,0.558-0.575V6.624C17.379,6.307,17.129,6.048,16.821,6.048z
+			 M16.264,9.044H8.129V7.2h8.135V9.044z" />
+                                </g>
+                            </g>
+                            </svg>
+                            <input type="text" md-no-asterisk ng-model="signup.businessName" placeholder="Business Name" name="businessName" required>
+                    </md-input-container>
+
+                    <md-input-container class="col font100 no-pad-left-right" md-no-float>
+                        <i class="glyphicon glyphicon-lock color name"></i>
+                        <select class="form-control">                 
+<option>AL </option>
+<option>AL </option>
+<option>AL </option>
+<option>AL </option>
+                        </select>
+                        <!--<div class="form-control selectbox text-grey" ng-click="signup.createBusinessTypePopup()" ng-init="signup.businessType = 'Type of Business'">
+                            <div class="pull-left pad-l-30">
+                                <span data-ng-if="signup.businessType.toLowerCase() == signup.businessType.toLowerCase() " data-ng-bind="signup.businessType"></span>
+                                <span data-ng-if="signup.businessType.toLowerCase() != signup.businessType.toLowerCase() " data-ng-bind="signup.businessType"></span>
+                            </div>
+                            <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+                        </div>-->
+                    </md-input-container>
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="glyphicon glyphicon-envelope color name"></i>
+                        <input md-no-asterisk type="email" mdInput placeholder="Email" name="email" ng-model="signup.businessEmail" required />
+                    </md-input-container>
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="fa fa-phone color name"></i>
+                        <input type="text" md-no-asterisk ng-model="signup.businessPhone" placeholder="Phone" name="businessPhone" required>
+                    </md-input-container>
+
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="fa fa-envelope color name"></i>
+                        <input type="text" md-no-asterisk placeholder="Address" ng-model="signup.businessAddress" name="businessAddress" required>
+                    </md-input-container>
+
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="fa fa-envelope color name"></i>
+                        <input type="text" md-no-asterisk placeholder="City" name="businessCity" ng-model="signup.businessCity" required />
+                    </md-input-container>
+
+
+                    <md-input-container class="col font100 border-bottom-grey" md-no-float>
+                        <!--<md-icon class="glyphicon glyphicon-lock color name"></md-icon>-->
+                        <!--<select class="pad-l-30 form-control">
+                            <option value="AL">Alabama</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AL">Alabama</option>
+                        </select>
+                        <i class="ion-arrow-down-b color" style="position: absolute; top: 5px; right: 0;"></i>-->
+                        <md-select md-no-asterisk name="businessState" placeholder="State" ng-model="signup.businessState" required>
+                            <md-option value="AL">Alabama</md-option>
+                            <md-option value="AK">Alaska</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="fa fa-envelope color name"></i>
+                        <input type="text" md-no-asterisk placeholder="Zip" name="zip" ng-model="signup.businessZip" required />
+                    </md-input-container>
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="fa fa-envelope color name"></i>
+                        <input type="text" md-no-asterisk placeholder="Hours" name="hours" ng-model="signup.businessHours" required />
+                    </md-input-container>
+
+                    <md-input-container class="col font100" md-no-float>
+                        <i class="glyphicon glyphicon-lock color name"></i>
+                        <input type="password" md-no-asterisk placeholder="Password" name="password" ng-model="signup.password" required />
+                    </md-input-container>
+
+                    <md-input-container class="col font100 m-b-30" md-no-float>
+                        <i class="glyphicon glyphicon-lock color name"></i>
+                        <input type="password" match-password="password" md-no-asterisk placeholder="Reconfirm Password" name="reconfirmPassword"
+                            ng-model="signup.reconfirmPassword" required />
+                    </md-input-container>
+
+
+                    <label class="toggle v-align-middle">
+                    <input type="checkbox" ng-model="signup.user" ng-change="signup.changeSignupType('user');">
+                    
+                    <div class="track">
+                        <div class="handle bkground"></div>
+                    </div>            
+                    
+                </label>
+                    <span class="text-grey" data-ng-bind="signup.userType"></span>
+                </div>
+
+
+                <div class="col-xs-12 no-pad-left-right">
+                    <button class="btn btn-block btn-lg btn-primary signIn bkground" ng-click="signup.businessSignup(signup.BusinessSignupForm)"
+                        ng-disabled="signup.BusinessSignupForm.$invalid || signup.businessType === 'Type of Business'">SIGN UP</button>
+                </div>
+                <div class="col-xs-12 no-pad-left-right">
+                    <div class="text-center m-t-30 m-b-15" ng-style="!login.user && {'margin-top':'50px'}">
+                        <small class="font-14">
+                            <span class="text-grey">When you Signup, automatically you agree with our  <br/> <a> Terms and service of Towken App</span>
+                        </small>
+                    </div>
+                </div>
+                </form>
+                <!--view for business signup-->
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view>
+    <ion-content scroll="true">
+        <div id="signupContainer">
+            <div class="loginFormHead">
+                <h3>Sign Up</h3>
+            </div>
+            <form name="SignupForm" novalidate>
+                <div class="list list-inset">
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" placeholder="First Name" ng-model="signup.fname" name="fname" ng-blur="fnameBlur=true" required>
+                    <span ng-show="SignupForm.fname.$invalid && fnameBlur"><small style="color:red">First name Can'nt Left blank</small></span>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Last Name</span>
+                        <input type="text" placeholder="Last Name" ng-model="signup.lname" name="lname"  ng-blur=" lnameBlur= true" required>
+                         <span ng-show="SignupForm.lname.$invalid && lnameBlur"><small style="color:red">Last name Can'nt Left blank</small></span>
+                        </label>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Email</span>
+                        <input type="email" placeholder="Email" ng-model="signup.email" name="email"  ng-blur="emailBlur=true" required>
+                         <span ng-show="SignupForm.email.$invalid && emailBlur"><small style="color:red">Not a valid Email</small></span>
+                        </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Password</span>
+                        <input type="password" placeholder="Password" ng-model="signup.password" name="password" ng-minlength="6" ng-blur="passBlur=true"required>
+                        <span ng-show="SignupForm.password.$invalid && passBlur"><small style="color:red">Password length must be 6</small></span>
+                        </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Confirm Password</span>
+                        <input type="password" name="cpassword" placeholder="Confirm Password" ng-model="signup.cpassword" password-verify="signup.password" name="cpassword" ng-blur="confirmPasswordBlur=true" required>
+                        <span ng-show="SignupForm.cpassword.$invalid && confirmPasswordBlur"><small style="color:red">Password must match </small></span>
+                        </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Phone Number</span>
+                        <input type="number" placeholder="Phone Number" ng-model="signup.pnumber" name="phone" required>
+                        </label>
+                </div>
+                <div class="col-xs-12" style="padding-bottom: 10px;">
+                    <div class="col-xs-12 no-pad-left-right">
+                        <div class="m-t-15">
+                            <div class="col-xs-6" style="padding: 0px;">
+                                <ion-checkbox ng-model="signup.user" style="border-width: 0px;" ng-change="signup.checkbox1(signup.user);"><span class="loginUserTypeText"><i class="ion-android-person"></i> User</span></ion-checkbox>
+                            </div>
+                            <div class="col-xs-6" style="padding: 0px;">
+                                <ion-checkbox ng-model="signup.business" style="border-width: 0px;" ng-change="signup.checkbox2(signup.business);"><span class="loginUserTypeText"><i class="ion-briefcase"></i> Business</span></ion-checkbox>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-lg btn-primary signIn m-t-15" ng-click="signup.signup()" ng-disabled="SignupForm.fname.$invalid||SignupForm.lname.$invalid||SignupForm.email.$invalid||SignupForm.password.$invalid||SignupForm.cpassword.$invalid||SignupForm.phone.$invalid||SignupForm.cpassword.passwordVerify">Sign Up</button>
+                    </div>
+                    <div class="col-xs-12 no-pad-left-right" ng-if="signup.user">
+                        <div class="row-margin  m-t-15 m-b-15">
+                            <div class="col-xs-4 border-grey"></div>
+                            <div class="col-xs-4 margin-top-or text-center">Or</div>
+                            <div class="col-xs-4 border-grey"></div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary btn-width btn-facebook" ng-click="signup.GoFb()">
+                                <i class="ion-social-facebook fa-float-left" style="font-size:18px; margin-top:0px;"></i>Login with Facebook
+                            </button>
+                        <button type="submit" class="btn btn-lg btn-danger btn-width btn-google" ng-click="signup.GoGoogle();">
+                                <i class="ion-social-googleplus fa-float-left" style="font-size:18px; margin-top:0px;"></i>Login with Google
+                            </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view> -->

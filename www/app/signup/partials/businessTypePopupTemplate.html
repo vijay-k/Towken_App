@@ -1,0 +1,3 @@
+<div data-ng-repeat="businessType in signup.businessTypes" class="business-type-popup">
+    <ion-checkbox class="business-type-popup" data-ng-model="businessType.checked" data-ng-click="signup.handleSelectedBusinessType($index, businessType)"><i class="fa fa-briefcase pad-r-10"></i><span class="text-black f-w-b">{{businessType.title}}</span></ion-checkbox>
+</div>

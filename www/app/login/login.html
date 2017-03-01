@@ -1,0 +1,79 @@
+<ion-view>
+    <ion-content scroll="true" layout="column" ng-cloak>
+        <div id="loginContainer">
+            <div class="text-center m-t-50">
+                <img src="app/assets/img/logo.png" class="ScaleLogo">
+            </div>
+
+            <md-content>
+                <form name="LoginForm" novalidate autocomplete="off" data-ng-submit="login.signIn()">
+                    <div class="list m-t-20">
+                        <md-input-container md-no-float class="md-block">
+                            <i class="glyphicon glyphicon-envelope color"></i>
+                            <input type="email" mdInput placeholder="Email" name="email" ng-model="login.email" required />
+                            <div ng-messages="LoginForm.email.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    This is required.
+                                </div>
+                                <div ng-message-exp="['email']">
+                                    Please provide a valid email address.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container md-no-float class="md-block">
+                            <i class="glyphicon glyphicon-lock color name"></i>
+                            <input type="password" ng-model="login.password" placeholder="Password" name="password" required>
+                            <div ng-messages="LoginForm.password.$error" role="alert">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <label class="toggle" style="vertical-align: middle;">
+                            <input type="checkbox" ng-model="login.user" ng-change="login.checkbox1(login.user);" />
+                                <div class="track">
+                                    <div class="handle bkground"></div>
+                                </div>
+                                </label>
+                        <span class="text-grey">{{login.userType}}</label>
+                    </div>
+
+                    <div class="col-xs-12 no-pad-left-right">
+                        <button type="submit" class="btn btn-pink btn-width bkground font-14" ng-disabled="LoginForm.email.$invalid || LoginForm.password.$invalid">Login</button>
+                    </div>
+                    <div class="col-xs-12 no-pad-left-right">
+                        <div class="text-center m-t-15 m-b-15">
+                            <small class="text-pink">
+                                <a href="#/ForgotPassword">Forgot password?</a>
+                                </small>
+                        </div>
+
+                        <!-- Social buttons -->
+                        <div ng-if="login.user" class="m-t-15 m-b-15">
+                            <button type="button" class="btn btn-width btn-facebook" ng-click="login.GoFb();">
+                            <span> Log in with Facebook </span>
+                        </button>
+
+                        <button type="button" class="btn btn-block btn-danger btn-google" ng-click="login.GoGoogle();">
+                            <span> Log in with Google </span>
+                            </button>
+                    </div>
+        </div>
+        <!-- Social buttons -->
+
+        <div class="text-center m-t-15 m-b-15" ng-style="!login.user && {'margin-top':'50px'}">
+            <small class="text-grey">
+                            <span>Don't have an account?
+                                <a href="javascript: void(0);" class="text-pink" href="javascript:void(0);" ng-click="login.GoSignup('User')">Sign Up</a>
+                                </span>
+                            <br/>
+                            <span ng-click="login.GoSignup('Business')">Are You a Business?</span>
+                            </small>
+        </div>
+        </div>
+        </form>
+        </md-content>
+        </div>
+    </ion-content>
+</ion-view>

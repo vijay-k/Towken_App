@@ -1,0 +1,85 @@
+<ion-view hide-back-button="true" hide-nav-bar="true" class="bkground" ng-cloak data-ng-if="create.costToDisplay !== null">
+    <div class="bar bar-header bkground">
+        <h1 class="title">Create Towken</h1>
+    </div>
+
+    <ion-content scroll="true" class="has-header">
+
+        <div class="list create-towken m-b-0">
+
+            <md-input-container class="col font100 no-pad-left-right ">
+                <h5 class="modalLevel">Duration </h5>
+                <div class="form-control selectbox text-grey" ng-click="create.durationPopup()">
+                    <div class="pull-left text-pink f-w-b" ng-if="create.DurationUpdate">
+                        <timer interval="1000" countdown="create.duration">{{hours}}:{{minutes}}:{{seconds}} </timer>
+                    </div>
+                    <span ng-if="!create.DurationUpdate" class="text-pink f-w-b"> {{create.duration}}</span>
+                    <div class="pull-right" style=" position: absolute; top: 45px; right: 0;">
+                        <i class="ion-arrow-down-b color"></i>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <!--Distance Popup-->
+            <md-input-container class="col font100 no-pad-left-right">
+                <h5 class="modalLevel">Distance</h5>
+                <div class="form-control selectbox text-pink" ng-click="create.distancePopup()">
+                    <div class="pull-left f-w-b">{{create.distance}}</div>
+                    <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+                </div>
+            </md-input-container>
+            <!--Distance Popup-->
+
+
+            <div style="padding: 10px 0 10px 0;">
+                <h5 class="modalLevel">Type of Discount</h5>
+                <div class="item range range-dark">
+                    <input type="range" name="volume" step="10" data-ng-model="create.typeofDiscount" class="no-margin" min="10" max="80" value="10">
+                    <div>
+                        <label class="text-pink m-l-10 " data-ng-bind="create.typeofDiscount + '%' "></label>
+                    </div>
+                </div>
+            </div>
+
+            <!--Towken Quantity-->
+            <md-input-container class="col font100 no-pad-left-right ">
+                <h5 class="modalLevel ">Towken Quantity</h5>
+                <div class="form-control selectbox text-pink " ng-click="create.quantityPopup() ">
+                    <div class="pull-left f-w-b">
+                        <span ng-if='create.selectedTowkenQuantity.quantity'>{{create.selectedTowkenQuantity.quantity}}</span>
+                        <span ng-if='!create.selectedTowkenQuantity.quantity' style="color: rgb(164, 160, 160); ">Select</span>
+                    </div>
+                    <div class="pull-right "><i class="ion-arrow-down-b color "></i></div>
+                </div>
+            </md-input-container>
+            <!--Towken Quantity-->
+
+
+            <div class="col no-pad-left-right m-b-18">
+                <h5 class="modalLevel">Towken Details</h5>
+                <input type="text" ng-model="create.details" placeholder="Enter your Towken Details" />
+            </div>
+
+            <div class="col no-pad-left-right discount-input m-b-18">
+                <input type="text" ng-model="create.discountCode" class="text-pink" data-ng-click="create.showDiscountCodePopup();" placeholder="Discount Code">
+                <span data-ng-bind="create.discountCouponCode" class="text-pink text-uppercase" style="position: absolute; top: 10px; right: 0;"></span>
+                <div class="error-dicsount-code">
+                    <label class="m-b-0" data-ng-bind="create.discountCodeInvalidMessage"></label>
+                </div>
+            </div>
+
+            <div class="col no-pad-left-right text-center">
+
+                <h3 class=" text-pink" data-ng-bind=" 'Towken Total : ' + create.costToDisplay"> : $9.95</h3>
+
+                <div class="col no-pad-left-right text-center m-b-18">
+
+                    <button class="btn btn-lg btn-block bkground white" ng-click="create.create()">{{create.SubmitButton}}</button>
+
+                    <button class="btn btn-lg btn-block cancelButton" ng-click="create.cancel()">CANCEL</button>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
